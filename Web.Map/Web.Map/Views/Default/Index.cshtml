@@ -1,0 +1,35 @@
+﻿@model Web.Map.Models.MapModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+
+<body >
+<div align="center">
+    <h2>Draw Layers from SQL Server</h2>
+    <div>
+        <input type="button" value="Generate Map" onclick="location.href = '@Url.Action("Draw", "Default")'"/>
+    </div>
+    <br/>
+    <div>
+        @{
+            string imageSrc = "";
+            if (!string.IsNullOrEmpty(Model.Base64Image))
+            {
+                imageSrc = $"data:image/jpeg;base64, {Model.Base64Image}";
+            }
+        }
+
+        <img src="@imageSrc"/>
+    </div>
+</div>
+</body>
+</html>
